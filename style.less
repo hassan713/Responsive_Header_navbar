@@ -1,0 +1,163 @@
+a{
+    text-decoration: none;
+    color: #fff;
+    &:hover{
+        color:rgb(134, 133, 133) ;
+    }
+}
+.top-bar-wraper{
+    background-color: black;
+}
+.top-bar{
+    width: 1200px;
+    height: 48px;
+    margin: 0 auto;
+    padding: 0px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+}
+
+// 设置 左侧 导航
+.left-menu{
+      //这里设置 隐藏的下拉块
+      &:active{ 
+        .nav{
+            display: block;
+        }
+      }
+    .menu-icon{
+        height: 48px;
+        width: 18px;
+        // background-color: #bfa;
+        position: relative;
+        
+        li{
+            width: 18px;
+            height: 1px;
+            background-color: #fff;
+            position: absolute;
+            transform-origin: left center;
+            transition: 0.5s all;
+        }
+        // li:nth-child(1){
+        //     top: 18px;
+        //     transform: rotateZ(40deg);
+        // }
+        // li:nth-child(2){
+        //     top: 24px;
+        //     opacity: 0;
+
+        // }
+        // li:nth-child(3){
+        //     top:30px;
+        //     transform: rotateZ(-40deg);
+        // }
+        li:nth-child(1){
+            top: 18px;
+        }
+        li:nth-child(2){
+            top: 24px;
+        }
+        li:nth-child(3){
+            top:30px;
+        }
+        &:active{
+            li:nth-child(1){
+                transform: rotateZ(40deg);
+            }
+            li:nth-child(2){
+                opacity: 0;
+    
+            }
+            li:nth-child(3){
+                transform: rotateZ(-40deg);
+            }
+        }
+    }
+    .nav{
+        position: absolute;
+        top:48px;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: black;
+        padding-top: 50px;
+        display: none;
+
+        li{
+            width: 85%;
+            margin: 0 auto;
+            border-bottom: 1px solid #333333;
+
+            a{
+                line-height: 44px;
+                font-size: 14px;
+                display: block;
+            }
+            //这里 注意 这个是 给 最后 一个 li 设置 样式 
+            &:last-child a{
+                display:inline-block ;
+                margin-right: 6px;
+            }
+            span{
+                color: #fff;
+            }
+        }
+    }
+}
+.logo{
+    a{
+        display: block;
+        width: 122px;
+        height: 48px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+//这里 我要 设置 媒体查询 ⚠️
+@media only screen {
+    //断电 768px 也就是说 网页改变的大小
+    @media (min-width: 768px){
+         .left-menu{
+             // 这里 为了多余的空间 被菜单自动 盛满 
+             flex: auto;
+             //
+             order: 2;
+             //隐藏菜单图标
+             .menu-icon{
+                 display: none;
+             }
+             // 显示 中间的菜单
+             .nav{
+                //  display: block;
+                 // 这里 我们要 关掉他的定位
+                 position:static ;
+                 display: flex;
+                 padding:0px;
+
+                 li{
+                     width: auto;
+                     border-bottom: none;
+
+                     a{
+                         height: 48px;
+                     }
+                    
+                     span{
+                         display: none;
+                     }
+                 }
+             }
+         }
+         .logo{
+             order: 1;
+            }
+         .user-info{
+             order: 3;
+         }
+    }
+}
